@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANT_FILE_VERSION = 2
+
+Vagrant.configure(VAGRANT_FILE_VERSION) do |config|
+   
+  config.vm.box = "puppetlabs/centos-7.0-64-puppet"
+  
+  config.vm.hostname = "dcserver.dicarte.com.br"
+  config.vm.network "private_network", ip: "192.168.200.101"
+  
+  config.vm.provider :virtualbox do |virtualbox|
+	virtualbox.customize ["modifyvm", :id, "--cpus", "2"]
+	virtualbox.customize ["modifyvm", :id, "--memory", "4096"]
+  end
+
+  config.vm.provision "puppet" do |puppet|
+	  puppet.environment_path = "environments"
+	  puppet.environment = "development"
+  end
+end

@@ -18,7 +18,7 @@
 "vagrant up" e pressione a tecla enter, aguarde o download da VM e a configuração do servidor (caso já tenha baixado, o vagrant irá apenas importar a vm).
     - Após o vagrant terminar o provisionamento da máquina, o servidor poderá ser acessado via SSH com o IP 192.168.200.101
 
-    * Adicionando nodes 
+* Adicionando nodes 
     - Os scripts para o provisionamento dos nodes serão disponibilizados posteriormente, porém caso queira adicionar algum node manualmente, siga as seguintes orientações:
       - Certifique que o node esteja utilizando Puppet na versão 4
       - É recomendado a utilização do CentOS 7 (devido aos testes terem sido feitos nessa distribuição), e a utilização da mesma imagem do puppetserver (puppetlabs/centos-7.0-64-puppet), de preferência certifique que o Puppet esteja na mesma versão em todas as máquinas.

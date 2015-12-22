@@ -1,6 +1,6 @@
 # dc_infra
 * Descrição 
-    - Repositório com os fontes para a implementação do serviço para a infraestrutura
+    - Repositório com os fontes para a implementação do serviço para arquitetura ágil
     - Servidor Puppet provisionado via Vagrant com Puppet Apply
 
 * Requisitos necessários 
@@ -12,6 +12,7 @@
 * Informações adicionais 
     - Será disponibilizado o ambiente completo com Puppet Server + Puppet Agent + Puppet Dashboard, os serviços serão descritos aqui na medida que forem incluídos no servidor.
     - Os scripts Puppet poderão ser utilizandos tanto via VM como numa máquina física, bastando para isso executar o manifest específico ou adaptar conforme necessário, as orientações serão descritas aqui na medida que o ambiente for evoluindo.
+    - Servidor com IPTables (Firewall) desativado
 
 * How-Do
     - Para começar o provisionamento do servidor faça um clone do repositório dc_infra, acesse a pasta puppetserver e digite o comando

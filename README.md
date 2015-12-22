@@ -25,11 +25,11 @@
       - Como o serviço DNS não foi configurado no servidor, adicione as informações dos nodes que você deseja adicionar no servidor, 
     no arquivo /etc/hosts, conforme comando abaixo (Faça isso tanto nos nodes como no servidor):
           - echo "ip_do_node fqdn_da_maquina nome_da_maquina" >> /etc/hosts
-      - Exemplo:
-        - Adicione as informações do node na máquina do próprio node, ou seja tanto node como master deverão ter as informações, segue um exemplo da inclusão do node agent1.dicarte.com.br com o ip 192.168.200.201 no servidor dcserver.dicarte.com.br
-          - [dcserver.dicarte.com.br]
+    - Exemplo:
+        - Adicione as informações do node na máquina do próprio node, ou seja tanto node como master deverão ter as informações, segue um exemplo da inclusão do node agent1.dicarte.com.br com o ip 192.168.200.201 no servidor dcserver.dicarte.com.br:
+            - [dcserver.dicarte.com.br]
               - echo 192.168.200.201 dcagent1.dicarte.com.br dcagent1" >> /etc/hosts
-          - [dcagent1.dicarte.com.br]
+            - [dcagent1.dicarte.com.br]
               - echo 192.168.200.201 dcagent1.dicarte.com.br dcagent1" >> /etc/hosts
       
 

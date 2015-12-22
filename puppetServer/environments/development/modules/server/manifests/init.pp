@@ -13,14 +13,13 @@ class server{
 		host_aliases => ['dcserver','puppet']
 	}
 
-	exec {'get-puppet-repository':
-		command => 'yum install http://yum.puppetlabs.com/el/7/PC1/x86_64/puppetlabs-release-pc1-0.9.2-1.el7.noarch.rpm -y',
-		path => '/usr/bin',
+	package{'puppetlabs-release-pc1':
+		ensure => 'present',
 		require => Package['puppet']
 	}
 
 	package {'puppet':
-		ensure => latest
+		ensure => 'latest'
 		
 	}
 
@@ -32,30 +31,33 @@ class server{
 	} 
 
 	package {'puppetserver':
-		ensure => present,
-		require => Exec['get-puppet-repository'],
+		ensure => '2.2.1-1.el7',
+		#require => Exec['get-puppet-repository'],
+		require => Package['puppetlabs-release-pc1']
 	}
 
-	service{"puppetserver":
+	service{'puppetserver':
 		ensure => running,
 		enable => true,
+		hasstatus => true,
+		hasrestart => true,
 		require => File['puppetserver.service']
 	}	
 
-	file {"puppetserver.service":
+	file {'puppetserver.service':
 		ensure => file,
-		path => "/usr/lib/systemd/system/puppetserver.service",
-		content => template("server/puppetserver.service.erb"),
+		path => '/usr/lib/systemd/system/puppetserver.service',
+		content => template("server/puppetserver.service.erb"),	
 		require => Package["puppetserver"]
 	}
 
-	exec{"iptables":
-		command => "iptables -F",
-		path => "/usr/sbin"
+	exec{'iptables':
+		command => 'iptables -F',
+		path => '/usr/sbin'
 	}
 	
-	file{"/etc/rc.d/rc.local":
-		content => "#!/bin/bash\niptables -F\n",
+	file{'/etc/rc.d/rc.local':
+		content => '#!/bin/bash\niptables -F\n',
 		mode => '0770'
 	}
 	

@@ -23,11 +23,11 @@
         - Após o vagrant terminar o provisionamento da máquina, o servidor poderá ser acessado via SSH com o IP 192.168.200.101
     * Provisionamento dos Agentes
         - Para começar o provisionamento dos agentes acesse a pasta puppetAgents e digite o comando "vagrant up" e pressione a tecla enter, aguarde a importação da VM, caso já tenha provisionado o servidor ou já tenha feito o download da imagem para a VM. Após a importação, os servidores serão provisionados. Os seguintes servidore estarão disponíveis:
-                - dcview (provisionado, porém não configurado) => Servidor com Servidor Apache instalado e configurado, ip => 192.168.200.211
-                - dcdb (provisionado, porém não configurado) => Servidor com PostgreSQLServer instalado e configurado, ip => 192.168.200.221
-                - dcbsb (provisionado, porém não configurado) => Servidor com WildFly instalado e configurado, ip => 192.168.200.231
-                - dcreport (provisionado, porém não configurado) => Servidor com Jenkins e Sonar instalado e configurado, ip => 192.168.200.241
-                - dcdependecy (não provisionado) => Servidor com Arquiva/ Nexus instaldo e configurado, ip => 192.168.200.251
+                 - dcview (provisionado, porém não configurado) => Servidor com Servidor Apache instalado e configurado, ip => 192.168.200.211
+                 - dcdb (provisionado, porém não configurado) => Servidor com PostgreSQLServer instalado e configurado, ip => 192.168.200.221
+                 - dcbsb (provisionado, porém não configurado) => Servidor com WildFly instalado e configurado, ip => 192.168.200.231
+                 - dcreport (provisionado, porém não configurado) => Servidor com Jenkins e Sonar instalado e configurado, ip => 192.168.200.241
+                 - dcdependecy (não provisionado) => Servidor com Arquiva/ Nexus instaldo e configurado, ip => 192.168.200.251
 
 * OBS: Para habilitar a comunicação entre os nodes (clients) e o master (servidor) execute o seguinte comando no servidor para cada node:
      - puppet cert sign "nomedonode"

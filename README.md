@@ -2,6 +2,7 @@
 * Descrição 
     - Repositório com os fontes para a implementação do serviço para arquitetura ágil
     - Servidor Puppet provisionado via Vagrant com Puppet Apply
+    - Agentes Puppet provisionados via Vagrant com Puppet Apply
 
 * Requisitos necessários 
     - Vagrant, na versão 1.7.4
@@ -13,27 +14,26 @@
     - Será disponibilizado o ambiente completo com Puppet Server + Puppet Agent + Puppet Dashboard, os serviços serão descritos aqui na medida que forem incluídos no servidor.
     - Os scripts Puppet poderão ser utilizandos tanto via VM como numa máquina física, bastando para isso executar o manifest específico ou adaptar conforme necessário, as orientações serão descritas aqui na medida que o ambiente for evoluindo.
     - Servidor com IPTables (Firewall) desativado
+    - Puppet na versão 4.3.1
 
 * How-Do
-    - Para começar o provisionamento do servidor faça um clone do repositório dc_infra, acesse a pasta puppetserver e digite o comando
+    * Provisionamento do Servidor   
+        - Para começar o provisionamento do servidor faça um clone do repositório dc_infra, acesse a pasta puppetserver e digite o comando
 "vagrant up" e pressione a tecla enter, aguarde o download da VM e a configuração do servidor (caso já tenha baixado, o vagrant irá apenas importar a vm).
-    - Após o vagrant terminar o provisionamento da máquina, o servidor poderá ser acessado via SSH com o IP 192.168.200.101
+        - Após o vagrant terminar o provisionamento da máquina, o servidor poderá ser acessado via SSH com o IP 192.168.200.101
+    * Provisionamento dos Agentes
+        - Para começar o provisionamento dos agentes acesse a pasta puppetAgents e digite o comando "vagrant up" e pressione a tecla enter, aguarde a importação da VM, caso já tenha provisionado o servidor ou já tenha feito o download da imagem para a VM. Após a importação, os servidores serão provisionados. Os seguintes servidore estarão disponíveis:
+                - dcview (provisionado, porém não configurado) => Servidor com Servidor Apache instalado e configurado, ip => 192.168.200.211
+                - dcdb (provisionado, porém não configurado) => Servidor com PostgreSQLServer instalado e configurado, ip => 192.168.200.221
+                - dcbsb (provisionado, porém não configurado) => Servidor com WildFly instalado e configurado, ip => 192.168.200.231
+                - dcreport (provisionado, porém não configurado) => Servidor com Jenkins e Sonar instalado e configurado, ip => 192.168.200.241
+                - dcdependecy (não provisionado) => Servidor com Arquiva/ Nexus instaldo e configurado, ip => 192.168.200.251
 
-* Adicionando nodes 
-    - Os scripts para o provisionamento dos nodes serão disponibilizados posteriormente, porém caso queira adicionar algum node manualmente, siga as seguintes orientações:
-      - Certifique que o node esteja utilizando Puppet na versão 4
-      - É recomendado a utilização do CentOS 7 (devido aos testes terem sido feitos nessa distribuição), e a utilização da mesma imagem do puppetserver (puppetlabs/centos-7.0-64-puppet), de preferência certifique que o Puppet esteja na mesma versão em todas as máquinas.
-      - Como o serviço DNS não foi configurado no servidor, adicione as informações dos nodes que você deseja adicionar no servidor, 
-    no arquivo /etc/hosts, conforme comando abaixo (Faça isso tanto nos nodes como no servidor):
-          - echo "ip_do_node fqdn_da_maquina nome_da_maquina" >> /etc/hosts
-    - Exemplo:
-        - Adicione as informações do node na máquina do próprio node, ou seja tanto node como master deverão ter as informações, segue um exemplo da inclusão do node agent1.dicarte.com.br com o ip 192.168.200.201 no servidor dcserver.dicarte.com.br:
-            - [dcserver.dicarte.com.br]
-              - echo 192.168.200.201 dcagent1.dicarte.com.br dcagent1" >> /etc/hosts
-            - [dcagent1.dicarte.com.br]
-              - echo 192.168.200.201 dcagent1.dicarte.com.br dcagent1" >> /etc/hosts
-      
-
+* OBS: Para habilitar a comunicação entre os nodes (clients) e o master (servidor) execute o seguinte comando no servidor para cada node:
+        - puppet cert sign "nomedonode"
+    * Exemplo: 
+        - Para habilitar a comunicação entre o node dcview e o master, execute o comando "puppet cert sign dcview.dicarte.com.br"
+    * A instação dos artefatos nos nodes ainda não foi disponibilizados, após habilitar a comunicação do Master com os Nodes, nada será instalado. 
 
 Dúvidas? Entre em contato por aqui mesmo ou via email: eduardo_dicarte@yahoo.com.br
 

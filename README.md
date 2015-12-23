@@ -33,9 +33,10 @@
      - puppet cert sign "nomedonode"
      
 
+
      - Exemplo: 
         - Para habilitar a comunicação entre o node dcview e o master, execute o comando: 
-             - puppet cert sign dcview.dicarte.com.br
+             * puppet cert sign dcview.dicarte.com.br
 
 
 * A instação dos artefatos nos nodes (clients) via master (servidor) ainda não foi disponibilizados, após habilitar a comunicação do Master com os Nodes, nada será instalado. 

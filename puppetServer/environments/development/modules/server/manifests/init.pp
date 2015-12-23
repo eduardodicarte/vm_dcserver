@@ -9,12 +9,13 @@ class server{
 	host {'dcserver.dicarte.com.br':
 		ensure => present,
 		target => '/etc/hosts',
-		ip => '192.168.200.100',
+		ip => '192.168.200.101',
 		host_aliases => ['dcserver','puppet']
 	}
 
 	package{'puppetlabs-release-pc1':
 		ensure => 'present',
+		source => 'http://yum.puppetlabs.com/el/7/PC1/x86_64/puppetlabs-release-pc1-0.9.2-1.el7.noarch.rpm',
 		require => Package['puppet']
 	}
 
@@ -32,7 +33,6 @@ class server{
 
 	package {'puppetserver':
 		ensure => '2.2.1-1.el7',
-		#require => Exec['get-puppet-repository'],
 		require => Package['puppetlabs-release-pc1']
 	}
 

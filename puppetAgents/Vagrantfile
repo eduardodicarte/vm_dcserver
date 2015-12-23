@@ -1,0 +1,73 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANT_FILE_VERSION = 2
+
+Vagrant.configure(VAGRANT_FILE_VERSION) do |config|
+   
+  config.vm.box = "puppetlabs/centos-7.0-64-puppet"
+
+  config.vm.define :dcview do |dcview_config|
+  	dcview_config.vm.hostname = "dcview.dicarte.com.br"	
+	dcview_config.vm.network "private_network", ip: "192.168.200.211"
+
+	dcview_config.vm.provision "puppet" do |puppet|
+		puppet.environment_path = "environments"
+		puppet.environment = "development"
+		puppet.facter = {
+			'ip' => '192.168.200.211',
+			'fqdn' => 'dcview.dicarte.com.br',
+			'hostname' => 'dcview'	
+		
+		}
+	end
+  end
+
+  config.vm.define :dcdb do |dcdb_config|
+  	dcdb_config.vm.hostname = "dcdb.dicarte.com.br"	
+	dcdb_config.vm.network "private_network", ip: "192.168.200.221"
+
+	dcdb_config.vm.provision "puppet" do |puppet|
+		puppet.environment_path = "environments"
+		puppet.environment = "development"
+		puppet.facter = {
+			'ip' => '192.168.200.221',
+			'fqdn' => 'dcdb.dicarte.com.br',
+			'hostname' => 'dcdb'	
+		
+		}
+	end
+  end
+
+  config.vm.define :dcbsb do |dcbsb_config|
+  	dcbsb_config.vm.hostname = "dcbsb.dicarte.com.br"	
+	dcbsb_config.vm.network "private_network", ip: "192.168.200.231"
+
+	dcbsb_config.vm.provision "puppet" do |puppet|
+		puppet.environment_path = "environments"
+		puppet.environment = "development"
+		puppet.facter = {
+			'ip' => '192.168.200.231',
+			'fqdn' => 'dcbsb.dicarte.com.br',
+			'hostname' => 'dcbsb'	
+		
+		}
+	end
+  end
+
+  config.vm.define :dcreport do |dcreport_config|
+  	dcreport_config.vm.hostname = "dcreport.dicarte.com.br"	
+	dcreport_config.vm.network "private_network", ip: "192.168.200.241"
+
+	dcreport_config.vm.provision "puppet" do |puppet|
+		puppet.environment_path = "environments"
+		puppet.environment = "development"
+		puppet.facter = {
+			'ip' => '192.168.200.241',
+			'fqdn' => 'dcreport.dicarte.com.br',
+			'hostname' => 'dcreport'	
+		
+		}
+	end
+  end
+end

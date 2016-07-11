@@ -1,6 +1,6 @@
 # dc_infra
 * Descrição 
-    - Repositório com os fontes para a implementação do serviço para arquitetura ágil
+    - Repositório com os fontes para a provisionamento da vm responsável pela criação do PuppetServer e dos nodes
     - Servidor Puppet provisionado via Vagrant com Puppet Apply
     - Agentes Puppet provisionados via Vagrant com Puppet Apply
 
@@ -11,7 +11,7 @@
         - https://www.virtualbox.org/wiki/Downloads
 
 * Informações adicionais 
-    - Será disponibilizado o ambiente completo com Puppet Server + Puppet Agent + Puppet Dashboard, os serviços serão descritos aqui na medida que forem incluídos no servidor.
+    - Será disponibilizado o ambiente completo com Puppet Server + Puppet Agent + Puppet Dashboard e/ou Foreman, os serviços serão descritos aqui na medida que forem incluídos no servidor.
     - Os scripts Puppet poderão ser utilizandos tanto via VM como numa máquina física, bastando para isso executar o manifest específico ou adaptar conforme necessário, as orientações serão descritas aqui na medida que o ambiente for evoluindo.
     - Servidor com IPTables (Firewall) desativado
     - Puppet na versão 4.3.1

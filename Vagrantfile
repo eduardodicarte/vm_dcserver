@@ -8,7 +8,11 @@ Vagrant.configure(VAGRANT_FILE_VERSION) do |config|
   config.vm.box = "puppetlabs/centos-7.0-64-puppet"
   
   config.vm.hostname = "dcserver.dicarte.com.br"
-  config.vm.network "private_network", ip: "192.168.200.101"
+  config.vm.network "public_network", ip: "192.168.25.66", bridge: "wlan0"
+  
+  config.ssh.username = "root"
+  config.ssh.password = "puppet"
+  config.ssh.insert_key = "true"
   
   config.vm.provider :virtualbox do |virtualbox|
 	virtualbox.customize ["modifyvm", :id, "--cpus", "2"]
@@ -19,4 +23,5 @@ Vagrant.configure(VAGRANT_FILE_VERSION) do |config|
 	  puppet.environment_path = "environments"
 	  puppet.environment = "development"
   end
+  
 end

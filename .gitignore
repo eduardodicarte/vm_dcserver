@@ -1,3 +1,6 @@
 #arquivos temporários do Vagrant 
 *~
+.vagrant
+.git
+.*
 .

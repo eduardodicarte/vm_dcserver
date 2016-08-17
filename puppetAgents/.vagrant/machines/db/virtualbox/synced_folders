@@ -1,1 +1,0 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Ambiente/repositories/dc_infra/puppetAgents","disabled":false},"/tmp/vagrant-puppet/environments":{"owner":"root","nfs__quiet":true,"guestpath":"/tmp/vagrant-puppet/environments","hostpath":"C:/Ambiente/repositories/dc_infra/puppetAgents/environments","disabled":false}}}
